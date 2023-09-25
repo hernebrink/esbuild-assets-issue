@@ -1,0 +1,85 @@
+{
+  "name": "standalone-esbuild",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "es",
+  "sourceRoot": "apps/standalone-esbuild/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser-esbuild",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/apps/standalone-esbuild",
+        "index": "apps/standalone-esbuild/src/index.html",
+        "main": "apps/standalone-esbuild/src/main.ts",
+        "polyfills": [
+          "zone.js"
+        ],
+        "tsConfig": "apps/standalone-esbuild/tsconfig.app.json",
+        "assets": [
+          "apps/standalone-esbuild/src/favicon.ico",
+          "apps/standalone-esbuild/src/assets",
+          {
+            "glob": "**/*",
+            "input": "./node_modules/ids-enterprise-wc/locale-data",
+            "output": "/locale-data"
+          },
+          {
+            "glob": "**/*",
+            "input": "./node_modules/ids-enterprise-wc/themes",
+            "output": "/themes"
+          }
+        ],
+        "styles": [
+          "apps/standalone-esbuild/src/styles.css"
+        ],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "standalone-esbuild:build:production"
+        },
+        "development": {
+          "browserTarget": "standalone-esbuild:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "standalone-esbuild:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "apps/standalone-esbuild/**/*.ts",
+          "apps/standalone-esbuild/**/*.html"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "name": "module-esbuild",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "es",
+  "sourceRoot": "apps/module-esbuild/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser-esbuild",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/apps/module-esbuild",
+        "index": "apps/module-esbuild/src/index.html",
+        "main": "apps/module-esbuild/src/main.ts",
+        "polyfills": [
+          "zone.js"
+        ],
+        "tsConfig": "apps/module-esbuild/tsconfig.app.json",
+        "assets": [
+          "apps/module-esbuild/src/favicon.ico",
+          "apps/module-esbuild/src/assets",
+          {
+            "glob": "**/*",
+            "input": "./node_modules/ids-enterprise-wc/locale-data",
+            "output": "/locale-data"
+          },
+          {
+            "glob": "**/*",
+            "input": "./node_modules/ids-enterprise-wc/themes",
+            "output": "/themes"
+          }
+        ],
+        "styles": [
+          "apps/module-esbuild/src/styles.css"
+        ],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "module-esbuild:build:production"
+        },
+        "development": {
+          "browserTarget": "module-esbuild:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "module-esbuild:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "apps/module-esbuild/**/*.ts",
+          "apps/module-esbuild/**/*.html"
+        ]
+      }
+    }
+  }
+}

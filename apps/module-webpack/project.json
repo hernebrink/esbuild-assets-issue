@@ -1,0 +1,99 @@
+{
+  "name": "module-webpack",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "es",
+  "sourceRoot": "apps/module-webpack/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/apps/module-webpack",
+        "index": "apps/module-webpack/src/index.html",
+        "main": "apps/module-webpack/src/main.ts",
+        "polyfills": [
+          "zone.js"
+        ],
+        "tsConfig": "apps/module-webpack/tsconfig.app.json",
+        "assets": [
+          "apps/module-webpack/src/favicon.ico",
+          "apps/module-webpack/src/assets",
+          {
+            "glob": "**/*",
+            "input": "./node_modules/ids-enterprise-wc/locale-data",
+            "output": "/locale-data"
+          },
+          {
+            "glob": "**/*",
+            "input": "./node_modules/ids-enterprise-wc/themes",
+            "output": "/themes"
+          }
+        ],
+        "styles": [
+          "apps/module-webpack/src/styles.css"
+        ],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "module-webpack:build:production"
+        },
+        "development": {
+          "browserTarget": "module-webpack:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "module-webpack:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "apps/module-webpack/**/*.ts",
+          "apps/module-webpack/**/*.html"
+        ]
+      }
+    }
+  }
+}

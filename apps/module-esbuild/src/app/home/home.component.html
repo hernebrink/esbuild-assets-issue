@@ -1,0 +1,17 @@
+<ids-container
+  language="en"
+  locale="en-US"
+  padding="16"
+  hidden
+  background-color="--ids-homepage-color-background-default"
+  animated
+>
+  <ids-theme-switcher mode="light"></ids-theme-switcher>
+
+  <ids-layout-grid auto-fit="true" gap="8" wrap="true">
+    <ids-layout-grid-cell *ngFor="let category of categories$ | async">
+      <ids-text font-size="20" type="h2">{{ category.name }}</ids-text>
+    </ids-layout-grid-cell>
+  </ids-layout-grid>
+  <ui-hero></ui-hero>
+</ids-container>
