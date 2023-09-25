@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start1": "nx serve --project=module-esbuild",
-    "start2": "nx serve --project=module-webpack",
-    "start3": "nx serve --project=standalone-esbuild",
-    "start4": "nx serve --project=standalone-webpack"
+    "start1": "nx serve --project=module-webpack --port=4201",
+    "start2": "nx serve --project=module-esbuild --port=4202",
+    "start3": "nx serve --project=standalone-esbuild --port=4203",
+    "start4": "nx serve --project=standalone-webpack --port=4204"
   },
   "private": true,
   "dependencies": {
