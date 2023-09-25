@@ -1,17 +1,40 @@
-<ids-container
-  language="en"
-  locale="en-US"
-  padding="16"
-  hidden
-  background-color="--ids-homepage-color-background-default"
-  animated
->
+<ids-container language="en" locale="en-US" padding="8" hidden>
   <ids-theme-switcher mode="light"></ids-theme-switcher>
 
-  <ids-layout-grid auto-fit="true" gap="8" wrap="true">
-    <ids-layout-grid-cell *ngFor="let category of categories$ | async">
-      <ids-text font-size="20" type="h2">{{ category.name }}</ids-text>
+  <ids-layout-grid auto-fit="false" cols="3">
+    <ids-layout-grid-cell col-span="1">
+      <ui-button type="primary">Primary</ui-button>
+    </ids-layout-grid-cell>
+    <ids-layout-grid-cell col-span="1">
+      <ui-button type="secondary">Secondary</ui-button>
+    </ids-layout-grid-cell>
+    <ids-layout-grid-cell col-span="1">
+      <ui-button type="tertiery">Tertiery</ui-button>
     </ids-layout-grid-cell>
   </ids-layout-grid>
-  <ui-hero></ui-hero>
+
+  <ids-layout-grid auto-fit="true">
+    <ids-layout-grid-cell>
+      <ids-editor id="editor-demo">
+        <p>
+          Embrace
+          <a href="http://en.wikipedia.org/wiki/e-commerce" class="hyperlink"
+            >e-commerce action-items</a
+          >, reintermediate, ecologies paradigms wireless share life-hacks
+          create innovative harness. Evolve solutions rich-clientAPIs synergies
+          harness relationships virtual vertical facilitate end-to-end,
+          wireless, evolve synergistic synergies.
+        </p>
+        <p>
+          Cross-platform, evolve, ROI scale cultivate eyeballs addelivery,
+          e-services content cross-platform leverage extensible viral
+          incentivize integrateAJAX-enabled sticky evolve magnetic cultivate
+          leverage; cutting-edge. Innovate, end-to-end podcasting, whiteboard
+          streamline e-business social; compelling, "cross-media exploit
+          infomediaries innovative integrate integrateAJAX-enabled." Killer
+          interactive reinvent, cultivate widgets leverage morph.
+        </p>
+      </ids-editor>
+    </ids-layout-grid-cell>
+  </ids-layout-grid>
 </ids-container>

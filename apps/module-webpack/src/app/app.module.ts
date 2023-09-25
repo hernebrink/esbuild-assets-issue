@@ -4,14 +4,14 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
 import { HomeComponent } from './home/home.component';
-import { HeroComponent } from '@ids-demo/components';
+import { ButtonComponent } from '@ids-demo/components';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
-    HeroComponent
+    ButtonComponent
   ],
   providers: [],
   bootstrap: [AppComponent],
